@@ -6,7 +6,7 @@ import './style.css';
 
 const ListGifs = ({ gifs }) => {
   return (
-    <div className="ListOfGifs">
+    <div className="ListGifs">
       {gifs.map(({ id, title, url }) => (
         <Gif id={id} key={id} title={title} url={url} />
       ))}

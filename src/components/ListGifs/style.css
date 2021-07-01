@@ -2,12 +2,12 @@
   --results-columns: 2;
 }
 
-.ListOfGifs {
+.ListGifs {
   column-count: var(--results-columns);
   column-gap: 0.5em;
 }
 
-.ListOfGifs-item {
+.ListGifs-item {
   -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
   page-break-inside: avoid; /* Firefox */
   break-inside: avoid; /* IE 10+ */

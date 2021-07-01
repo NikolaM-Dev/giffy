@@ -10,8 +10,6 @@ const Home = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // navegar a otra ruta
-    console.log(keyword);
     pushLocation(`/Search/${keyword}`);
   };
 
@@ -28,6 +26,7 @@ const Home = () => {
           value={keyword}
           placeholder="Search a gif here..."
         />
+        <button>Buscar</button>
       </form>
       <h2 className="App-title">Los gifs mas populares</h2>
       <ul>

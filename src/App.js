@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, Route } from 'wouter';
 
-import Home from './pages/Home';
 import Detail from './pages/Detail';
+import Home from './pages/Home';
 import SearchResults from './pages/SearchResults';
 
 import './App.css';
@@ -11,8 +11,10 @@ const App = () => {
   return (
     <div className="App">
       <section className="App-content">
-        <Link to="/" className="App">
-          App
+        <Link to="/">
+          <figure className="App-logo">
+            <img alt="Giffy logo" src="/logo.png" />
+          </figure>
         </Link>
         <Route component={Home} path="/" />
         <Route component={SearchResults} path="/search/:keyword" />

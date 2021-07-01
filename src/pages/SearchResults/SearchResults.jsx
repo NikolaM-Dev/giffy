@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Spinner from '../../components/Spinner';
-import ListGifs from '../../components/ListGifs';
+
 import getGifs from '../../services/getGifs';
+import ListGifs from '../../components/ListGifs';
+import Spinner from '../../components/Spinner';
 
 const SearchResults = ({ params }) => {
   const [loading, setLoading] = useState(false);

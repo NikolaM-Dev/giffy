@@ -92,27 +92,27 @@ i {
   box-shadow: 0 0 0 var(--gifShadow-size) var(--brand-color_5);
 }
 
-.Gif:hover:nth-child(5n + 1) h4 {
+.Gif:hover:nth-child(5n + 1) h3 {
   background-color: var(--brand-color_1);
   color: var(--theme-body-bg);
 }
 
-.Gif:hover:nth-child(5n + 2) h4 {
+.Gif:hover:nth-child(5n + 2) h3 {
   background-color: var(--brand-color_2);
   color: var(--theme-body-bg);
 }
 
-.Gif:hover:nth-child(5n + 3) h4 {
+.Gif:hover:nth-child(5n + 3) h3 {
   background-color: var(--brand-color_3);
   color: white;
 }
 
-.Gif:hover:nth-child(5n + 4) h4 {
+.Gif:hover:nth-child(5n + 4) h3 {
   background-color: var(--brand-color_4);
   color: white;
 }
 
-.Gif:hover:nth-child(5n + 5) h4 {
+.Gif:hover:nth-child(5n + 5) h3 {
   background-color: var(--brand-color_5);
   color: var(--theme-body-bg);
 }

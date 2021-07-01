@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import getGifs from '../../services/getGifs';
 import ListGifs from '../../components/ListGifs';
 import Spinner from '../../components/Spinner';
+import useGifs from '../../hooks/useGifs';
 
 const SearchResults = ({ params }) => {
-  const [loading, setLoading] = useState(false);
-  const [gifs, setGifs] = useState([]);
   const { keyword } = params;
-
-  useEffect(() => {
-    setLoading(true);
-    getGifs({ keyword }).then((gifs) => {
-      setGifs(gifs);
-      setLoading(false);
-    });
-  }, [keyword]);
+  const { loading, gifs } = useGifs({ keyword });
 
   return <>{loading ? <Spinner /> : <ListGifs gifs={gifs} />}</>;
 };
 
-export default SearchResults;
+export default React.memo(SearchResults);

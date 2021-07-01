@@ -1,1 +1,1 @@
-export { default } from './Gif.jsx';
+export { default } from './Gif';

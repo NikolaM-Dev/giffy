@@ -1,0 +1,29 @@
+h2,
+p {
+  color: white;
+  text-align: center;
+}
+
+.Gif {
+  border-radius: 6px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  padding: 32px;
+  width: 90%;
+  text-decoration: none;
+}
+
+.Gif h2 {
+  margin-bottom: 20px;
+}
+
+.Gif img {
+  object-fit: contain;
+}
+
+i {
+  font-size: 80px;
+  text-align: center;
+}

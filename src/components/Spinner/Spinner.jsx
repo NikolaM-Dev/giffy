@@ -1,14 +1,16 @@
 import React from 'react';
 
-import './style.css';
+import './Spinner.css';
 
-const Spinner = () => (
-  <div className="lds-ring">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-);
+const Spinner = () => {
+  return (
+    <div className="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
 
 export default Spinner;

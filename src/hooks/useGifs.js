@@ -9,8 +9,7 @@ const useGifs = ({ keyword } = { keyword: null }) => {
 
   useEffect(() => {
     setLoading(true);
-    const keywordToUse =
-      keyword || localStorage.getItem('lastKeyword') || 'corgy';
+    const keywordToUse = keyword || localStorage.getItem('lastKeyword') || null;
 
     getGifs({ keyword: keywordToUse }).then((gifs) => {
       setGifs(gifs);

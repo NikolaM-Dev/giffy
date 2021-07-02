@@ -3,9 +3,8 @@ import { useLocation } from 'wouter';
 
 import ListGifs from '../../components/ListGifs';
 import Spinner from '../../components/Spinner';
+import TrendingSearches from '../../components/TrendingSearches/';
 import useGifs from '../../hooks/useGifs';
-
-// const POPULAR_GIFS = ['Matrix', 'Venezuela', 'Chile', 'Colombia', 'Ecuador'];
 
 const Home = () => {
   const [keyword, setKeyword] = useState('');
@@ -16,7 +15,7 @@ const Home = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    pushLocation(`/Search/${keyword}`);
+    pushLocation(`/search/${keyword}`);
   };
 
   const handleChange = (evt) => {
@@ -26,24 +25,23 @@ const Home = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <button>Buscar</button>
         <input
           onChange={handleChange}
           type="text"
           value={keyword}
           placeholder="Search a gif here..."
         />
-        <button>Buscar</button>
       </form>
-      <h2 className="App-title">Ultima Busqueda</h2>
-      {loading ? <Spinner /> : <ListGifs gifs={gifs} />}
-      {/* <h2 className="App-title">Los gifs mas populares</h2>
-      <ul>
-        {POPULAR_GIFS.map((popularGif) => (
-          <li key={popularGif}>
-            <Link to={`/search/${popularGif}`}>Gifs de {popularGif}</Link>
-          </li>
-        ))}
-      </ul> */}
+      <div className="App-main">
+        <div className="App-results">
+          <h3 className="App-title">Última búsqueda</h3>
+          {loading ? <Spinner /> : <ListGifs gifs={gifs} />}
+        </div>
+        <div className="App-category">
+          <TrendingSearches />
+        </div>
+      </div>
     </>
   );
 };

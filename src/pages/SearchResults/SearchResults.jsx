@@ -8,7 +8,18 @@ const SearchResults = ({ params }) => {
   const { keyword } = params;
   const { loading, gifs } = useGifs({ keyword });
 
-  return <>{loading ? <Spinner /> : <ListGifs gifs={gifs} />}</>;
+  return (
+    <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <h3 className="App-title">{decodeURI(keyword)}</h3>
+          <ListGifs gifs={gifs} />
+        </>
+      )}
+    </>
+  );
 };
 
-export default React.memo(SearchResults);
+export default SearchResults;

@@ -1,1 +1,1 @@
-export { default } from './TrendingSearches';
+export { default } from './LazyTrending';

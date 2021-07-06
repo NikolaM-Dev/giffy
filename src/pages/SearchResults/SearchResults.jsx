@@ -25,7 +25,6 @@ const SearchResults = ({ params }) => {
   );
 
   useEffect(() => {
-    console.log(isNearScreen);
     isNearScreen && debounceHandleNextPage();
   }, [debounceHandleNextPage, isNearScreen]);
 

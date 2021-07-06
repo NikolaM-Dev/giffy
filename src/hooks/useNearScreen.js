@@ -14,7 +14,6 @@ const useNearScreen = ({
 
     const onChange = (entries) => {
       const entry = entries[0];
-      console.log(entry.isIntersecting);
       if (entry.isIntersecting) {
         setShow(true);
         once && observer.disconnect();

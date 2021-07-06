@@ -34,11 +34,11 @@ const SearchResults = ({ params }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <>
+        <div className="App-wrapper">
           <h3 className="App-title">{decodeURI(keyword)}</h3>
           <ListGifs gifs={gifs} />
           <div id="visor" ref={externalRef}></div>
-        </>
+        </div>
       )}
     </>
   );

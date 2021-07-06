@@ -12,7 +12,7 @@ const Home = () => {
   const [path, pushLocation] = useLocation();
   const { loading, gifs } = useGifs();
 
-  const handleSubmit = useCallback(
+  const handleSubmitSearchForm = useCallback(
     ({ keyword }) => {
       pushLocation(`/search/${keyword}`);
     },
@@ -21,14 +21,18 @@ const Home = () => {
 
   return (
     <>
-      <SearchForm onSubmit={handleSubmit} />
-      <div className="App-main">
-        <div className="App-results">
-          <h3 className="App-title">Última búsqueda</h3>
-          {loading ? <Spinner /> : <ListGifs gifs={gifs} />}
-        </div>
-        <div className="App-category">
-          <TrendingSearches />
+      <header className="o-header">
+        <SearchForm onSubmit={handleSubmitSearchForm} />
+      </header>
+      <div className="App-wrapper">
+        <div className="App-main">
+          <div className="App-results">
+            <h3 className="App-title">Última búsqueda</h3>
+            {loading ? <Spinner /> : <ListGifs gifs={gifs} />}
+          </div>
+          <div className="App-category">
+            <TrendingSearches />
+          </div>
         </div>
       </div>
     </>

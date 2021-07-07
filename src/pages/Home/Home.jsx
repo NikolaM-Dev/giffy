@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Helmet } from 'react-helmet';
 import { useLocation } from 'wouter';
 
 import ListGifs from 'components/ListGifs';
@@ -21,6 +22,9 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Home | Giffy</title>
+      </Helmet>
       <header className="o-header">
         <SearchForm onSubmit={handleSubmitSearchForm} />
       </header>

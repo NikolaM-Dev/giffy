@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import debounce from 'just-debounce-it';
 
 import ListGifs from 'components/ListGifs';
@@ -16,7 +17,7 @@ const SearchResults = ({ params }) => {
     once: false,
   });
 
-  // const handleNextPage = () => console.log('Next page');
+  const title = gifs ? `${gifs.length} resultados de ${keyword}` : '';
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceHandleNextPage = useCallback(
@@ -33,11 +34,17 @@ const SearchResults = ({ params }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="App-wrapper">
-          <h3 className="App-title">{decodeURI(keyword)}</h3>
-          <ListGifs gifs={gifs} />
-          <div id="visor" ref={externalRef}></div>
-        </div>
+        <>
+          <Helmet>
+            <title>{title}</title>
+            <meta name="description" content={title} />
+          </Helmet>
+          <div className="App-wrapper">
+            <h3 className="App-title">{decodeURI(keyword)}</h3>
+            <ListGifs gifs={gifs} />
+            <div id="visor" ref={externalRef}></div>
+          </div>
+        </>
       )}
     </>
   );

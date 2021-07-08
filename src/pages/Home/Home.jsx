@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useLocation } from 'wouter';
 
 import ListGifs from 'components/ListGifs';
 import SearchForm from 'components/SearchForm';
@@ -9,16 +8,7 @@ import TrendingSearches from 'components/TrendingSearches';
 import useGifs from 'hooks/useGifs';
 
 const Home = () => {
-  // eslint-disable-next-line
-  const [path, pushLocation] = useLocation();
   const { loading, gifs } = useGifs();
-
-  const handleSubmitSearchForm = useCallback(
-    ({ keyword }) => {
-      pushLocation(`/search/${keyword}`);
-    },
-    [pushLocation]
-  );
 
   return (
     <>
@@ -26,7 +16,7 @@ const Home = () => {
         <title>Home | Giffy</title>
       </Helmet>
       <header className="o-header">
-        <SearchForm onSubmit={handleSubmitSearchForm} />
+        <SearchForm />
       </header>
       <div className="App-wrapper">
         <div className="App-main">

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import debounce from 'just-debounce-it';
 
 import ListGifs from 'components/ListGifs';
+import SearchForm from 'components/SearchForm';
 import Spinner from 'components/Spinner';
 import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
@@ -39,6 +40,9 @@ const SearchResults = ({ params }) => {
             <title>{title}</title>
             <meta name="description" content={title} />
           </Helmet>
+          <header className="o-header">
+            <SearchForm />
+          </header>
           <div className="App-wrapper">
             <h3 className="App-title">{decodeURI(keyword)}</h3>
             <ListGifs gifs={gifs} />

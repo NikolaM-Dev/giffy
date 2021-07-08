@@ -9,8 +9,8 @@ import useGifs from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
 
 const SearchResults = ({ params }) => {
-  const { keyword } = params;
-  const { loading, gifs, setPage } = useGifs({ keyword });
+  const { keyword, rating } = params;
+  const { loading, gifs, setPage } = useGifs({ keyword, rating });
   const externalRef = useRef();
   const { isNearScreen } = useNearScreen({
     externalRef: loading ? null : externalRef,
@@ -41,7 +41,7 @@ const SearchResults = ({ params }) => {
             <meta name="description" content={title} />
           </Helmet>
           <header className="o-header">
-            <SearchForm />
+            <SearchForm initialKeyword={keyword} initialRating={rating} />
           </header>
           <div className="App-wrapper">
             <h3 className="App-title">{decodeURI(keyword)}</h3>

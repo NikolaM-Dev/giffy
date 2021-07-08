@@ -8,7 +8,7 @@ const useTitle = ({ description, title }) => {
 
   useEffect(() => {
     const previusTitle = prevTitle.current;
-    if (title) document.title = `${title} || Giffy`;
+    if (title) document.title = `${title} | Giffy`;
 
     return () => (document.title = previusTitle);
   }, [title]);

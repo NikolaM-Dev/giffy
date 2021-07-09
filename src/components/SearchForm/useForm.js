@@ -23,28 +23,18 @@ const REDUCER = (state, action) => {
 };
 
 const useForm = ({ initialKeyword = '', initialRating = 'g' } = {}) => {
-  const [state, dispath] = useReducer(REDUCER, {
-    keyword: decodeURI(initialKeyword),
+  const [{ keyword, rating }, dispatch] = useReducer(REDUCER, {
+    keyword: decodeURIComponent(initialKeyword),
     rating: initialRating,
-    times: 0,
   });
 
-  const { keyword, rating, times } = state;
-
   return {
+    changeKeyword: ({ keyword }) =>
+      dispatch({ type: ACTIONS.CHANGE_KEYWORD, payload: keyword }),
+    changeRating: ({ rating }) =>
+      dispatch({ type: ACTIONS.CHANGE_RATING, payload: rating }),
     keyword,
     rating,
-    times,
-    updateKeyword: (keyword) =>
-      dispath({
-        type: ACTIONS.UPDATE_KEYWORD,
-        payload: keyword,
-      }),
-    updateRating: (rating) =>
-      dispath({
-        type: ACTIONS.UPDATE_RATING,
-        payload: rating,
-      }),
   };
 };
 

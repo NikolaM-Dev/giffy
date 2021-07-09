@@ -8,25 +8,31 @@ import './SearchForm.css';
 const RATINGS = ['g', 'pg', 'pg-13', 'r'];
 
 const SearchForm = ({ initialKeyword = '', initialRating = RATINGS[0] }) => {
-  const { keyword, rating, times, updateKeyword, updateRating } = useForm({
+  // eslint-disable-next-line
+  const [path, pushLocation] = useLocation();
+
+  const { keyword, rating, changeKeyword, changeRating } = useForm({
     initialKeyword,
     initialRating,
   });
 
-  // eslint-disable-next-line
-  const [path, pushLocation] = useLocation();
+  const onSubmit = ({ keyword }) => {
+    if (keyword !== '') {
+      pushLocation(`/search/${keyword}/${rating}`);
+    }
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    pushLocation(`/search/${keyword}/${rating}`);
+    onSubmit({ keyword });
   };
 
   const handleChangeKeyword = (evt) => {
-    updateKeyword(evt.target.value);
+    changeKeyword({ keyword: evt.target.value });
   };
 
   const handleChangeRating = (evt) => {
-    updateRating(evt.target.value);
+    changeRating({ rating: evt.target.value });
   };
 
   return (
@@ -39,13 +45,16 @@ const SearchForm = ({ initialKeyword = '', initialRating = RATINGS[0] }) => {
         type="text"
         value={keyword}
       />
-      <select onChange={handleChangeRating} value={rating}>
+      <select
+        className="c-search-list"
+        onChange={handleChangeRating}
+        value={rating}
+      >
         <option disabled>Rating type</option>
         {RATINGS.map((rating) => (
           <option key={rating}>{rating}</option>
         ))}
       </select>
-      <small>{times}</small>
     </form>
   );
 };

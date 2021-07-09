@@ -22,7 +22,7 @@ const REDUCER = (state, action) => {
   return actionReducer ? actionReducer(state, action) : state;
 };
 
-const useForm = ({ initialKeyword, initialRating }) => {
+const useForm = ({ initialKeyword = '', initialRating = 'g' } = {}) => {
   const [state, dispath] = useReducer(REDUCER, {
     keyword: decodeURI(initialKeyword),
     rating: initialRating,

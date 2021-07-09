@@ -9,7 +9,7 @@ describe('useForm in SearchForm', () => {
     const { result } = setup();
 
     act(() => {
-      result.current.updateKeyword('batman');
+      result.current.changeKeyword('batman');
     });
 
     expect(result.current.keyword).toBe('batman');
@@ -25,8 +25,8 @@ describe('useForm in SearchForm', () => {
     const { result } = setup({ initialKeyword: 'matrix' });
 
     act(() => {
-      result.current.updateKeyword('b');
-      result.current.updateKeyword('ba');
+      result.current.changeKeyword('b');
+      result.current.changeKeyword('ba');
     });
 
     expect(result.current.keyword).toBe('ba');

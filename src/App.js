@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
-import { Link, Route } from 'wouter';
+import { Link, Route, Switch } from 'wouter';
 
 import { GifsContextProvider } from 'context/GifsContext';
 import Detail from 'pages/Detail/Detail';
+import ErrorPage from 'pages/ErrorPage';
 import SearchResults from 'pages/SearchResults';
 import StaticContext from 'context/StaticContext';
 
@@ -24,13 +25,15 @@ const App = () => {
               </figure>
             </Link>
             <GifsContextProvider>
-              <Route component={HomePage} path="/" />
-              <Route
-                component={SearchResults}
-                path="/search/:keyword/:rating?"
-              />
-              <Route component={Detail} path="/gif/:id" />
-              <Route component={() => <h1>404 ERROR 😢</h1>} path="/404" />
+              <Switch>
+                <Route component={HomePage} path="/" />
+                <Route
+                  component={SearchResults}
+                  path="/search/:keyword/:rating?"
+                />
+                <Route component={Detail} path="/gif/:id" />
+                <Route component={ErrorPage} path="/:rest*" />
+              </Switch>
             </GifsContextProvider>
           </section>
         </Suspense>

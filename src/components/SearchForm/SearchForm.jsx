@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { useLocation } from 'wouter';
 
 import './SearchForm.css';
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r'];
 
+const reducer = (state, param) => {
+  console.log(param);
+  return {
+    ...state,
+    keyword: param,
+    times: state.times + 1,
+  };
+};
+
 const SearchForm = ({ initialKeyword = '', initialRating = RATINGS[0] }) => {
-  const [keyword, setKeyword] = useState(decodeURI(initialKeyword));
   const [rating, setRating] = useState(initialRating);
+
+  const [state, dispath] = useReducer(reducer, {
+    keyword: decodeURI(initialKeyword),
+    times: 0,
+  });
+
+  const { keyword, times } = state;
 
   // eslint-disable-next-line
   const [path, pushLocation] = useLocation();
@@ -17,8 +32,12 @@ const SearchForm = ({ initialKeyword = '', initialRating = RATINGS[0] }) => {
     pushLocation(`/search/${keyword}/${rating}`);
   };
 
+  const updateKeyword = (keyword) => {
+    dispath(keyword);
+  };
+
   const handleChange = (evt) => {
-    setKeyword(evt.target.value);
+    updateKeyword(evt.target.value);
   };
 
   const handleChangeRating = (evt) => {
@@ -41,6 +60,7 @@ const SearchForm = ({ initialKeyword = '', initialRating = RATINGS[0] }) => {
           <option key={rating}>{rating}</option>
         ))}
       </select>
+      <small>{times}</small>
     </form>
   );
 };
